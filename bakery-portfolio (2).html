@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الحلويات السعيدة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --bg-color: #fff;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* رأس الصفحة بسيط */
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* قائمة التنقل مع أيقونات */
+        .nav-menu {
+            background-color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* بطاقات المنتجات */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .order-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        /* نموذج الطلب المبسط */
+        .order-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* زر واتساب ثابت */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        /* رسائل المساعدة */
+        .help-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* التذييل المبسط */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .nav-item {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-cookie"></i>
+            حلويات السعادة
+        </div>
+    </header>
+
+    <nav class="nav-menu">
+        <a href="#menu" class="nav-item">
+            <i class="fas fa-birthday-cake"></i>
+            قائمة الحلويات
+        </a>
+        <a href="#order" class="nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            اطلب الآن
+        </a>
+        <a href="#contact" class="nav-item">
+            <i class="fas fa-phone"></i>
+            اتصل بنا
+        </a>
+    </nav>
+
+    <main>
+        <section id="menu" class="products">
+            <div class="product-card">
+                <img src="/api/placeholder/400/300" alt="كيكة الشوكولاتة">
+                <div class="product-info">
+                    <h3 class="product-title">كيكة الشوكولاتة</h3>
+                    <p>كيكة لذيذة بالشوكولاتة الداكنة</p>
+                    <div class="product-price">80 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="/api/placeholder/400/300" alt="كنافة">
+                <div class="product-info">
+                    <h3 class="product-title">كنافة</h3>
+                    <p>كنافة طازجة بالجبنة</p>
+                    <div class="product-price">60 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="/api/placeholder/400/300" alt="كنافة">
+                <div class="product-info">
+                    <h3 class="product-title">كنافة</h3>
+                    <p>كنافة طازجة بالجبنة</p>
+                    <div class="product-price">60 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="/api/placeholder/400/300" alt="كنافة">
+                <div class="product-info">
+                    <h3 class="product-title">كنافة</h3>
+                    <p>كنافة طازجة بالجبنة</p>
+                    <div class="product-price">60 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://modo3.com/thumbs/fit630x300/25469/1442304789/%D8%B7%D8%B1%D9%8A%D9%82%D8%A9_%D8%B9%D9%85%D9%84_%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%81%D8%A9.jpg" alt="كنافة">
+                <div class="product-info">
+                    <h3 class="product-title">كنافة</h3>
+                    <p>كنافة طازجة بالجبنة</p>
+                    <div class="product-price">60 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://static.webteb.net/images/content/ramadanrecipe_recipe_136_871.jpg" alt="بقلاوة">
+                <div class="product-info">
+                    <h3 class="product-title">بقلاوة</h3>
+                    <p>بقلاوة بالمكسرات</p>
+                    <div class="product-price">70 ريال</div>
+                    <button class="order-button">
+                        <i class="fas fa-cart-plus"></i>
+                        اطلب الآن
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="order" class="order-form">
+            <h2 class="form-title">اطلب الآن</h2>
+            <form id="orderForm">
+                <div class="input-group">
+                    <label>الاسم</label>
+                    <input type="text" required>
+                    <div class="help-text">الرجاء كتابة الاسم الكامل</div>
+                </div>
+
+                <div class="input-group">
+                    <label>رقم الجوال</label>
+                    <input type="tel" required>
+                    <div class="help-text">مثال: 05xxxxxxxx</div>
+                </div>
+
+                <div class="input-group">
+                    <label>طلبك</label>
+                    <textarea rows="4" required></textarea>
+                    <div class="help-text">اكتب تفاصيل طلبك والكمية المطلوبة</div>
+                </div>
+
+                <button type="submit" class="order-button">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال الطلب
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <h3>تواصل معنا</h3>
+        <p>نسعد بخدمتكم في أي وقت</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/212 655-087526"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/212 655-087526" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // الحصول على قيم الحقول
+            const name = document.getElementById('nameInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const order = document.getElementById('orderInput').value;
+            
+            // تجهيز نص الرسالة
+            const message = `
+            مرحباً، أود تقديم طلب:
+            الاسم: ${name}
+            رقم الجوال: ${phone}
+            الطلب: ${order}
+            `.trim();
+            
+            // رقم الواتساب الخاص بالمتجر (قم بتغييره إلى رقمك)
+            const whatsappNumber = '966500000000'; // غير هذا الرقم إلى رقمك
+            
+            // إنشاء رابط الواتساب
+            const whatsappUrl = `https://wa.me/212 655-087526`;
+            
+            // فتح الرابط في نافذة جديدة
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // تبسيط التفاعلات للأزرار الأخرى
+        document.querySelectorAll('.order-button').forEach(button => {
+            if (!button.closest('form')) {
+                button.addEventListener('click', () => {
+                    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
